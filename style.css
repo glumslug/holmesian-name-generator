@@ -1,0 +1,182 @@
+html {
+  background: gray;
+  font-family: "Fondamento";
+}
+.cr {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  text-align: center;
+  color: rgb(53, 53, 53);
+  font-size: 14px;
+}
+h1 {
+  /* background-color: red; */
+  margin-bottom: 0;
+}
+button {
+  background: none;
+  border: none;
+  margin: none;
+  padding: none;
+  cursor: pointer;
+  font-family: "Fondamento";
+}
+
+#name-space {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #b09810;
+  background-image: url("https://www.transparenttextures.com/patterns/large-leather.png");
+  border: 1px solid #755030;
+  width: fit-content;
+  border-radius: 5px;
+  padding: 10px;
+  height: 28px;
+  position: relative;
+}
+#name-space.hidden {
+  display: none;
+}
+
+.nameIdv {
+  display: flex;
+  align-items: center;
+  gap: 0.5px;
+  position: relative;
+}
+
+.syl {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.option {
+  border-bottom: 1px solid black;
+  position: relative;
+}
+#last {
+  cursor: pointer;
+  transition: 0.2s;
+}
+#characterTitle {
+  cursor: pointer;
+  transition: 0.2s;
+}
+/* #last + p:hover,
+div ~ p:hover {
+  color: #974848;
+} */
+
+.changer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  color: #646464;
+  /* background-color: #847f6f; */
+  top: 60px;
+  left: -6px;
+  color: white;
+  font-weight: normal;
+  transition: 0.4s;
+}
+.changer:hover {
+  opacity: 0.5;
+}
+
+.rel {
+  position: relative;
+}
+
+#legend {
+  position: absolute;
+  font-size: 14px;
+  top: 100px;
+  left: 12px;
+  color: white;
+  width: 10rem;
+}
+
+#button-group {
+  display: flex;
+  align-items: start;
+  /*   height: fit-content; */
+  gap: 5px;
+  position: relative;
+}
+
+#instructions {
+  color: rgb(65, 63, 63);
+  font-size: 16px;
+  max-width: 28rem;
+  margin: 5px 10px 15px 10px;
+  font-style: italic;
+}
+
+.button {
+  border: 1px solid black;
+  background: #755030;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  background-image: repeating-linear-gradient(
+    -214deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.25) 1px,
+    transparent 0px,
+    transparent 13px
+  );
+  background-size: 11px;
+  background-position: 8px 10px;
+  transition: 0.4s;
+}
+.button:disabled {
+  opacity: 0.5;
+}
+.button:hover {
+  border: 1px #b7950b solid;
+}
+
+.button:active {
+  border: 1px red solid;
+}
+
+.button span {
+  font-family: "Fondamento";
+  font-size: 1.2rem;
+  color: #f8f5e7;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+#resetAll {
+  background-color: rgb(81, 128, 112);
+}
+
+.name-container {
+  display: flex;
+  gap: 5px;
+  margin-top: 0.8rem;
+}
+#copy-button {
+  background: none;
+  border: none;
+  transition: 0.4s;
+  transform: translate(0, 15px);
+  cursor: pointer;
+  height: 1.1rem;
+  /* background-color: red; */
+}
+#copy-button:hover {
+  opacity: 0.5;
+}
+#copy-button.hidden {
+  display: none;
+}

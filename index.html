@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Holmesian Name Generator</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <h1>Holmesian Name Generator</h1>
+    <div id="instructions">
+      Add first name first. Re-roll any part by clicking button again. Click
+      wheel to toggle alternatives. Click last name or title to remove. Source:
+      <span
+        ><a
+          href="https://zenopusarchives.blogspot.com/2013/06/holmesian-random-names.html"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            fill="currentColor"
+            class="bi bi-box-arrow-up-right"
+            viewBox="0 0 16 16"
+            style="margin-left: 5px"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+            /></svg></a
+      ></span>
+    </div>
+    <div id="button-group">
+      <button id="generateFirst" class="button" onclick='generateName("first")'>
+        <span>First Name</span>
+      </button>
+      <button
+        id="generateLast"
+        class="button"
+        onclick='generateName("last")'
+        disabled="true"
+      >
+        <span>Last Name</span>
+      </button>
+      <button
+        id="generateTitle"
+        class="button"
+        onclick="generateTitle()"
+        disabled="true"
+      >
+        <span>Title</span>
+      </button>
+      <button id="resetAll" class="reset button" onclick="resetAll()">
+        <span>Reset</span>
+      </button>
+    </div>
+    <div class="name-container">
+      <div id="name-space" class="hidden">
+        <div id="first" class="nameIdv"></div>
+        <div id="last" class="nameIdv"></div>
+        <div id="characterTitle" class="nameIdv"></div>
+      </div>
+      <button id="copy-button" class="hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-clipboard"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
+          />
+          <path
+            d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+          />
+        </svg>
+      </button>
+    </div>
+    <p class="cr">
+      &copy;
+      <span
+        ><a href="https://eliferster.com/" target="_blank">Eli Ferster</a></span
+      >
+      2023
+    </p>
+  </body>
+  <script type="text/javascript" src="/script.js"></script>
+</html>
