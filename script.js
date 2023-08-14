@@ -179,11 +179,13 @@ function generateTitle() {
     const changer = document.createElement("button");
     changer.classList.add("changer");
     changer.innerHTML = refSym;
+    let i = 1;
     changer.addEventListener("click", () => {
-      if (p.innerText === choice[0]) {
-        p.innerText = choice[1];
+      p.innerText = choice[i];
+      if (i < choice.length - 1) {
+        i++;
       } else {
-        p.innerText = choice[0];
+        i = 0;
       }
     });
     cont.appendChild(p);
