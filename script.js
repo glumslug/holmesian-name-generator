@@ -208,6 +208,7 @@ function generateName(position) {
   if (firstClick && position === "first") {
     nameSpace.classList.remove("hidden");
     copyButton.classList.remove("hidden");
+    pinButton.classList.remove("hidden");
     document.getElementById("generateLast").disabled = false;
     document.getElementById("generateTitle").disabled = false;
     firstClick = false;
@@ -220,8 +221,10 @@ function generateName(position) {
   numSyl = numSyl < 11 ? 1 : numSyl < 71 ? 2 : numSyl < 71 ? 3 : 4;
 
   for (let i = 0; i < numSyl; i++) {
-    let syl = syllables[Math.floor(Math.random() * 100)];
+    const rn = Math.floor(Math.random() * 100);
+    let syl = syllables[rn];
     console.log(syl);
+    console.log(rn);
     if (Array.isArray(syl)) {
       const cont = document.createElement("div");
       cont.classList.add("rel");
@@ -259,22 +262,77 @@ function generateName(position) {
     }
   }
 }
-
+// Get containers and buttons
 const nameSpace = document.getElementById("name-space");
+const pinContainer = document.getElementById("pin-container");
+
 const buttonGroup = document.getElementById("button-group");
 const copyButton = document.getElementById("copy-button");
-copyButton.addEventListener("click", () => {
+const pinButton = document.getElementById("pin-button");
+const copyBtnSvg =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#b09475" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>';
+// regenerate pinned names from local storage
+function displayPinned() {
+  localStorage.getItem("names") || localStorage.setItem("names", "[]");
+  pinContainer.innerHTML = "";
+  console.log(localStorage.getItem("names"));
+  const pinList = JSON.parse(localStorage.getItem("names"));
+  if (pinList.length === 0) {
+    pinContainer.classList.add("hidden");
+
+    return;
+  }
+  pinContainer.classList.remove("hidden");
+
+  pinList.forEach((name) => {
+    let d = document.createElement("div");
+    d.classList.add("flex-row");
+    let p = document.createElement("p");
+    let b = document.createElement("button");
+    let c = document.createElement("button");
+    c.setAttribute("id", "copy-pinned");
+    c.innerHTML = copyBtnSvg;
+    c.addEventListener("click", () => {
+      navigator.clipboard.writeText(name);
+    });
+    b.innerHTML = "&times;";
+    b.classList.add("remove");
+    b.addEventListener("click", () => {
+      let currNames = JSON.parse(localStorage.getItem("names"));
+      currNames.splice(currNames.indexOf(name), 1);
+      console.log(currNames);
+      localStorage.setItem("names", JSON.stringify(currNames));
+      displayPinned();
+    });
+    p.innerText = name;
+    d.append(p, c, b);
+    pinContainer.append(d);
+  });
+}
+displayPinned();
+function copyName() {
   navigator.clipboard.writeText(
     [...nameSpace.querySelectorAll(".nameIdv")]
       .map((idv) => idv.textContent.replace(/[^a-zA-Z ]/g, ""))
       .join(" ")
   );
-});
-let nameList = [];
+}
+function pinName() {
+  const nameToPin = [...nameSpace.querySelectorAll(".nameIdv")]
+    .map((idv) => idv.textContent.replace(/[^a-zA-Z ]/g, ""))
+    .join(" ");
+  let currNames = JSON.parse(localStorage.getItem("names")) || [];
+  currNames.push(nameToPin);
+  console.log(currNames);
+  localStorage.setItem("names", JSON.stringify(currNames));
+  displayPinned();
+}
+
 function resetAll() {
   nameSpace.querySelectorAll("div").forEach((idv) => (idv.innerHTML = ""));
   nameSpace.classList.add("hidden");
   copyButton.classList.add("hidden");
+  pinButton.classList.add("hidden");
   firstClick = true;
   document.getElementById("generateLast").disabled = true;
   document.getElementById("generateTitle").disabled = true;

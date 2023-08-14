@@ -41,6 +41,86 @@ button {
   display: none;
 }
 
+#name-space.hidden {
+  display: none;
+}
+/* pin container */
+#pin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 3rem;
+
+  gap: 10px;
+  background-color: #eaca73;
+  background-image: url("https://www.transparenttextures.com/patterns/large-leather.png");
+  border: 1px solid #755030;
+  width: fit-content;
+  border-radius: 5px;
+  padding: 10px;
+  padding-top: 2rem;
+  min-width: 22.8rem;
+  position: relative;
+}
+
+#pin-container::before {
+  content: "Pinned Names";
+  color: #9c3535;
+  position: absolute;
+  top: 5px;
+  width: 95%;
+  text-align: center;
+  border-bottom: 2px double #9c3535;
+}
+#copy-pinned {
+  /* background-color: red; */
+  transform: translate(5px, 2px);
+}
+#copy-pinned:hover > svg {
+  transition: 0.4s;
+  opacity: 0.4;
+  /* fill: rgb(136, 173, 141); */
+}
+
+#copy-pinned:active > svg {
+  background-color: rgb(136, 0, 255);
+  border-radius: 5px;
+  /* fill: rgb(0, 255, 34); */
+}
+
+#pin-container.hidden {
+  display: none;
+}
+.flex-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 5px;
+  /* background-color: red; */
+  height: 2rem;
+}
+.remove {
+  font-size: 35px;
+  font-weight: bold;
+  color: #b09475;
+  margin-bottom: 5px;
+}
+
+.remove:hover {
+  opacity: 0.9;
+  color: rgb(214, 127, 104);
+}
+.label {
+  font-size: 15px;
+  color: black;
+  transform: translate(5px, 30px);
+  text-shadow: 2px 2px 5px rgb(77, 76, 76);
+  letter-spacing: 1px;
+}
+.label.hidden {
+  display: none;
+}
+
 .nameIdv {
   display: flex;
   align-items: center;
@@ -178,5 +258,20 @@ div ~ p:hover {
   opacity: 0.5;
 }
 #copy-button.hidden {
+  display: none;
+}
+#pin-button {
+  background: none;
+  border: none;
+  transition: 0.4s;
+  transform: translate(-8px, 15px);
+  cursor: pointer;
+  height: 1.3rem;
+  /* background-color: red; */
+}
+#pin-button:hover {
+  opacity: 0.5;
+}
+#pin-button.hidden {
   display: none;
 }
