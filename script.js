@@ -253,6 +253,7 @@ function generateName(position) {
       if (position === "last") {
         p.addEventListener("click", () => {
           nameContainer.innerHTML = "";
+          nameContainer.classList.remove("strike");
           ls = true;
         });
         p.addEventListener("mouseover", () => {
@@ -270,6 +271,7 @@ function generateName(position) {
       if (position === "last") {
         p.addEventListener("click", () => {
           nameContainer.innerHTML = "";
+          nameContainer.classList.remove("strike");
           ls = true;
         });
         p.addEventListener("mouseover", () => {
