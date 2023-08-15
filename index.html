@@ -15,72 +15,38 @@
       rel="stylesheet"
     />
     <h1>Holmesian Name Generator</h1>
-    <div id="instructions">
-      <!--       <ul>
-        <li>Add first name first.</li>
-        <li>Re-roll any part by clicking button again.</li>
-        <li>Click wheel to toggle alternatives.</li>
-        <li>Click last name or title itself to remove.</li>
-        <li>
-          Click pin to save names. Stored in localstorage so will disappear if
-          you clear your cache.
-        </li>
-        <li>
-          Click pin to save names. Stored in localstorage so will disappear if
-          you clear your cache.
-        </li>
-        <li>
-          Source:
-          <span
-            ><a
-              href="https://zenopusarchives.blogspot.com/2013/06/holmesian-random-names.html"
-              target="_blank"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                fill="currentColor"
-                class="bi bi-box-arrow-up-right"
-                viewBox="0 0 16 16"
-                style="margin-left: 5px"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                /></svg></a
-          ></span>
-        </li>
-      </ul> -->
-      Add first name first. Re-roll any part by clicking button again. Click
-      wheel to toggle alternatives. Click last name or title itself to remove.
-      Click pin to save name to localstorage. Source:
-      <span
-        ><a
-          href="https://zenopusarchives.blogspot.com/2013/06/holmesian-random-names.html"
-          target="_blank"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
-            fill="currentColor"
-            class="bi bi-box-arrow-up-right"
-            viewBox="0 0 16 16"
-            style="margin-left: 5px"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-            />
-            <path
-              fill-rule="evenodd"
-              d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-            /></svg></a
-      ></span>
-    </div>
+
+    <ul id="instructions">
+      <li>Re-roll any part by clicking button again.</li>
+      <li>Click wheel to toggle alternatives.</li>
+      <li>Click any piece of the name to remove it.</li>
+      <li>
+        Click pin to save name. Source:
+        <span
+          ><a
+            href="https://zenopusarchives.blogspot.com/2013/06/holmesian-random-names.html"
+            target="_blank"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              fill="currentColor"
+              class="bi bi-box-arrow-up-right"
+              viewBox="0 0 16 16"
+              style="margin-left: 5px"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+              /></svg></a
+        ></span>
+      </li>
+    </ul>
+
     <div id="button-group">
       <button
         id="generateFirst"
@@ -93,7 +59,6 @@
         id="generateLast"
         class="button reroll"
         onclick='generateName("last")'
-        disabled="true"
       >
         Last Name
       </button>
@@ -101,7 +66,6 @@
         id="generateTitle"
         class="button reroll"
         onclick="generateTitle()"
-        disabled="true"
       >
         Title
       </button>

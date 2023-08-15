@@ -164,6 +164,13 @@ const refSym =
   '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#525252" class="bi bi-arrow-repeat" viewBox="0 0 16 16"><path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/><path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/></svg>';
 let prevChoice = "";
 function generateTitle() {
+  if (firstClick) {
+    nameSpace.classList.remove("hidden");
+    copyButton.classList.remove("hidden");
+    pinButton.classList.remove("hidden");
+
+    firstClick = false;
+  }
   let choice = titles[Math.floor(Math.random() * 20)];
   if (choice === prevChoice) {
     generateTitle();
@@ -197,6 +204,9 @@ function generateTitle() {
     p.addEventListener("click", () => {
       titleContainer.innerHTML = "";
       tt = true;
+      if (nameSpace.innerText.length === 0) {
+        resetAll();
+      }
     });
     titleContainer.appendChild(cont);
   } else {
@@ -205,6 +215,9 @@ function generateTitle() {
     p.classList.add("syl");
     p.addEventListener("click", () => {
       titleContainer.innerHTML = "";
+      if (nameSpace.innerText.length === 0) {
+        resetAll();
+      }
     });
     titleContainer.appendChild(p);
   }
@@ -212,12 +225,11 @@ function generateTitle() {
 
 let firstClick = true;
 function generateName(position) {
-  if (firstClick && position === "first") {
+  if (firstClick) {
     nameSpace.classList.remove("hidden");
     copyButton.classList.remove("hidden");
     pinButton.classList.remove("hidden");
-    document.getElementById("generateLast").disabled = false;
-    document.getElementById("generateTitle").disabled = false;
+
     firstClick = false;
   }
 
@@ -250,37 +262,44 @@ function generateName(position) {
 
       cont.appendChild(p);
       cont.appendChild(changer);
-      if (position === "last") {
-        p.addEventListener("click", () => {
-          nameContainer.innerHTML = "";
-          nameContainer.classList.remove("strike");
-          ls = true;
-        });
-        p.addEventListener("mouseover", () => {
-          nameContainer.classList.add("strike");
-        });
-        p.addEventListener("mouseout", () => {
-          nameContainer.classList.remove("strike");
-        });
-      }
+
+      p.addEventListener("click", () => {
+        nameContainer.innerHTML = "";
+        nameContainer.classList.remove("strike");
+        position === "last" ? (ls = true) : (fs = true);
+        if (nameSpace.innerText.length === 0) {
+          resetAll();
+        }
+      });
+      p.addEventListener("mouseover", () => {
+        nameContainer.classList.add("strike");
+      });
+      p.addEventListener("mouseout", () => {
+        nameContainer.classList.remove("strike");
+      });
+
       nameContainer.appendChild(cont);
     } else {
       const p = document.createElement("p");
       p.innerText = i === 0 ? syl : syl.toLowerCase();
       p.classList.add("syl");
-      if (position === "last") {
-        p.addEventListener("click", () => {
-          nameContainer.innerHTML = "";
-          nameContainer.classList.remove("strike");
-          ls = true;
-        });
-        p.addEventListener("mouseover", () => {
-          nameContainer.classList.add("strike");
-        });
-        p.addEventListener("mouseout", () => {
-          nameContainer.classList.remove("strike");
-        });
-      }
+
+      p.addEventListener("click", () => {
+        nameContainer.innerHTML = "";
+        nameContainer.classList.remove("strike");
+        if (nameSpace.innerText.length === 0) {
+          resetAll();
+        }
+
+        position === "last" ? (ls = true) : (fs = true);
+      });
+      p.addEventListener("mouseover", () => {
+        nameContainer.classList.add("strike");
+      });
+      p.addEventListener("mouseout", () => {
+        nameContainer.classList.remove("strike");
+      });
+
       nameContainer.appendChild(p);
     }
   }
@@ -396,8 +415,7 @@ function resetAll() {
   copyButton.classList.add("hidden");
   pinButton.classList.add("hidden");
   firstClick = true;
-  document.getElementById("generateLast").disabled = true;
-  document.getElementById("generateTitle").disabled = true;
+
   fr = true;
   ls = true;
   tt = true;
