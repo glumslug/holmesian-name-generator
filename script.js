@@ -196,6 +196,7 @@ function generateTitle() {
     cont.appendChild(changer);
     p.addEventListener("click", () => {
       titleContainer.innerHTML = "";
+      tt = true;
     });
     titleContainer.appendChild(cont);
   } else {
@@ -246,11 +247,19 @@ function generateName(position) {
           p.innerText = i === 0 ? syl[0] : syl[0].toLowerCase();
         }
       });
+
       cont.appendChild(p);
       cont.appendChild(changer);
       if (position === "last") {
         p.addEventListener("click", () => {
           nameContainer.innerHTML = "";
+          ls = true;
+        });
+        p.addEventListener("mouseover", () => {
+          nameContainer.classList.add("strike");
+        });
+        p.addEventListener("mouseout", () => {
+          nameContainer.classList.remove("strike");
         });
       }
       nameContainer.appendChild(cont);
@@ -261,6 +270,13 @@ function generateName(position) {
       if (position === "last") {
         p.addEventListener("click", () => {
           nameContainer.innerHTML = "";
+          ls = true;
+        });
+        p.addEventListener("mouseover", () => {
+          nameContainer.classList.add("strike");
+        });
+        p.addEventListener("mouseout", () => {
+          nameContainer.classList.remove("strike");
         });
       }
       nameContainer.appendChild(p);
@@ -274,6 +290,45 @@ const pinContainer = document.getElementById("pin-container");
 const buttonGroup = document.getElementById("button-group");
 const copyButton = document.getElementById("copy-button");
 const pinButton = document.getElementById("pin-button");
+const reroll = document.querySelectorAll(".reroll");
+let fr = true;
+let ls = true;
+let tt = true;
+reroll.forEach((node) => {
+  const ogText = node.innerText;
+
+  node.addEventListener("click", () => {
+    node.innerText = ogText;
+    ogText === "First Name"
+      ? (fr = false)
+      : ogText === "Last Name"
+      ? (ls = false)
+      : ogText === "Title"
+      ? (tt = false)
+      : null;
+  });
+  node.addEventListener("mouseover", () => {
+    switch (ogText) {
+      case "First Name":
+        node.style.width = "125px";
+        fr ? (node.innerText = "Roll") : (node.innerText = "Re-Roll");
+        break;
+      case "Last Name":
+        node.style.width = "120px";
+        ls ? (node.innerText = "Roll") : (node.innerText = "Re-Roll");
+        break;
+      case "Title":
+        node.style.width = "60px";
+        tt ? (node.innerText = "Roll") : (node.innerText = "Re-");
+        break;
+      default:
+        break;
+    }
+  });
+  node.addEventListener("mouseout", () => {
+    node.innerText = ogText;
+  });
+});
 const copyBtnSvg =
   '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#b09475" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>';
 // regenerate pinned names from local storage
@@ -341,4 +396,7 @@ function resetAll() {
   firstClick = true;
   document.getElementById("generateLast").disabled = true;
   document.getElementById("generateTitle").disabled = true;
+  fr = true;
+  ls = true;
+  tt = true;
 }
