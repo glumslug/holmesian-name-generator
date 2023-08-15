@@ -1,5 +1,5 @@
 function vowel() {
-  const vl = [["A", "E", "I", "O", "U", "Y"]][Math.floor(Math.random() * 6)];
+  const vl = ["A", "E", "I", "O", "U", "Y"][Math.floor(Math.random() * 6)];
   return vl;
 }
 const syllables = [
@@ -222,8 +222,7 @@ function generateName(position) {
   for (let i = 0; i < numSyl; i++) {
     const rn = Math.floor(Math.random() * 100);
     let syl = syllables[rn];
-    console.log(syl);
-    console.log(rn);
+
     if (Array.isArray(syl)) {
       const cont = document.createElement("div");
       cont.classList.add("rel");
@@ -274,7 +273,7 @@ const copyBtnSvg =
 function displayPinned() {
   localStorage.getItem("names") || localStorage.setItem("names", "[]");
   pinContainer.innerHTML = "";
-  console.log(localStorage.getItem("names"));
+  //   console.log(localStorage.getItem("names"));
   const pinList = JSON.parse(localStorage.getItem("names"));
   if (pinList.length === 0) {
     pinContainer.classList.add("hidden");
@@ -299,7 +298,7 @@ function displayPinned() {
     b.addEventListener("click", () => {
       let currNames = JSON.parse(localStorage.getItem("names"));
       currNames.splice(currNames.indexOf(name), 1);
-      console.log(currNames);
+      //   console.log(currNames);
       localStorage.setItem("names", JSON.stringify(currNames));
       displayPinned();
     });
@@ -322,7 +321,7 @@ function pinName() {
     .join(" ");
   let currNames = JSON.parse(localStorage.getItem("names")) || [];
   currNames.push(nameToPin);
-  console.log(currNames);
+  //   console.log(currNames);
   localStorage.setItem("names", JSON.stringify(currNames));
   displayPinned();
 }
