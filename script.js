@@ -104,31 +104,7 @@ const syllables = [
   "Zo",
   vowel(),
 ];
-function getGen() {
-  const vl = [
-    "the First",
-    "the Second",
-    "the Third",
-    "the Fourth",
-    "the Fifth",
-    "the Sixth",
-    "the Seventh",
-    "the Eighth",
-    "the Ninth",
-    "the Tenth",
-    "the Eleventh",
-    "the Twelfth",
-    "the Thirteenth",
-    "the Fourteenth",
-    "the Fifteenth",
-    "the Sixteenth",
-    "the Seventeenth",
-    "the Eighteenth",
-    "the Nineteenth",
-    "the Twentieth",
-  ][Math.floor(Math.random() * 20)];
-  return vl;
-}
+
 let titles = [
   [
     "of the North",
@@ -149,7 +125,28 @@ let titles = [
   ["the Black", "the Blue", "the Brown", "the Green", "the Red", "the Yellow"],
   ["the Fearless", "the Brave"],
   ["the Fair", "the Foul", "the Lovely", "the Loathsome"],
-  getGen(),
+  [
+    "the First",
+    "the Second",
+    "the Third",
+    "the Fourth",
+    "the Fifth",
+    "the Sixth",
+    "the Seventh",
+    "the Eighth",
+    "the Ninth",
+    "the Tenth",
+    "the Eleventh",
+    "the Twelfth",
+    "the Thirteenth",
+    "the Fourteenth",
+    "the Fifteenth",
+    "the Sixteenth",
+    "the Seventeenth",
+    "the Eighteenth",
+    "the Nineteenth",
+    "the Twentieth",
+  ],
   ["the Gentle", "the Cruel"],
   "the Great",
   ["the Merciful", "the Merciless"],
